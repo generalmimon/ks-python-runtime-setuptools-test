@@ -1,0 +1,32 @@
+name: ks-python-runtime-setuptools-test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ks-runtime-url:
+          - git+https://github.com/dgelessus/kaitai_struct_python_runtime.git@fix_setup_cfg_read
+          - git+https://github.com/kaitai-io/kaitai_struct_python_runtime.git@master
+        python-version: [2.7, 3.8]
+        setuptools-version: [40.0, 41.0, 42.0, 44.0, 46.0]
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install setuptools
+        run: python -m pip install --user setuptools==${{ matrix.setuptools-version }}
+      - name: Install enum34
+        run: python -m pip install enum34
+        if: ${{ matrix.python-version < 3.0 }}
+      - name: Install KS runtime library
+        run: python -m pip install --user ${{ matrix.ks-runtime-url }}
+      - name: Run test.py
+        run: python test.py
