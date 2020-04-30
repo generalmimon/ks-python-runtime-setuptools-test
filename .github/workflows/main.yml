@@ -14,9 +14,17 @@ jobs:
         ks-runtime-url:
           - git+https://github.com/dgelessus/kaitai_struct_python_runtime.git@fix_setup_cfg_read
           - git+https://github.com/kaitai-io/kaitai_struct_python_runtime.git@master
-        python-version: [2.7, 3.8]
-        setuptools-version: ['40.0.0']
-        # , 41.0, 42.0, 44.0, 46.0
+        python-version:
+          - 2.7
+          - pypy2
+          - 3.8
+          - pypy3
+        setuptools-version:
+          - 40.0.0
+          - 41.0.0
+          - 42.0.0
+          - 44.0.0
+          - 46.0.0
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v1
