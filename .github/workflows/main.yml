@@ -10,8 +10,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        fail-fast: false
         setuptools-version:
           - 40.0.0
           - 41.4.0
