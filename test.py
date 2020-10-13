@@ -14,7 +14,7 @@ functions = KaitaiStream.bytes_strip_right, KaitaiStream.bytes_terminate
 times = {f.__name__: [] for f in functions}
 
 # https://www.peterbe.com/plog/how-to-do-performance-micro-benchmarks-in-python
-for i in range(2048):
+for i in range(8192):
     f_idx = random.randint(0, 1)
 
     t0 = time.time()
