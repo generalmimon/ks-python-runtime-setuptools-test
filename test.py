@@ -4,7 +4,7 @@ import time
 import random
 import statistics
 
-len_blob = 64 * (2 ** 10) # 64 kiB
+len_blob = 256 * (2 ** 10) # 256 kiB
 num_sections = 2
 num_iterations = 512
 
