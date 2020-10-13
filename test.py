@@ -12,7 +12,7 @@ len_section = len_blob // num_sections
 
 test_blob = bytes([i // len_section for i in range(len_blob)])
 
-times = {f.__name__: [] for f in functions}
+times = {'bytes_strip_right': [], 'bytes_terminate': []}
 
 # https://www.peterbe.com/plog/how-to-do-performance-micro-benchmarks-in-python
 for i in range(num_iterations):
