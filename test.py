@@ -17,6 +17,8 @@ times = {f.__name__: [] for f in functions}
 
 # https://www.peterbe.com/plog/how-to-do-performance-micro-benchmarks-in-python
 for i in range(num_iterations):
+    if i % 32 == 0:
+        print(i)
     f_idx = random.randint(0, 1)
 
     t0 = time.time()
