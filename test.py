@@ -4,7 +4,7 @@ import time
 import random
 import statistics
 
-len_blob = (2 ** 20) // 4 # 0.25 MiB
+len_blob = 4 * (2 ** 20) # 4 MiB
 num_sections = 2
 len_section = len_blob // num_sections
 
