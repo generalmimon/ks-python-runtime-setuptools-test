@@ -4,7 +4,7 @@ import time
 import random
 import statistics
 
-len_blob = 8 * (2 ** 20) # 8 MiB
+len_blob = 1 * (2 ** 10) # 1 kiB
 num_sections = 2
 num_iterations = 512
 
@@ -12,7 +12,6 @@ len_section = len_blob // num_sections
 
 test_blob = bytes([i // len_section for i in range(len_blob)])
 
-functions = KaitaiStream.bytes_strip_right, KaitaiStream.bytes_terminate
 times = {f.__name__: [] for f in functions}
 
 # https://www.peterbe.com/plog/how-to-do-performance-micro-benchmarks-in-python
