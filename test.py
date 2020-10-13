@@ -4,7 +4,7 @@ import time
 import random
 import statistics
 
-len_blob = 1 * (2 ** 10) # 1 kiB
+len_blob = 64 * (2 ** 10) # 64 kiB
 num_sections = 2
 num_iterations = 512
 
@@ -16,8 +16,6 @@ times = {'bytes_strip_right': [], 'bytes_terminate': []}
 
 # https://www.peterbe.com/plog/how-to-do-performance-micro-benchmarks-in-python
 for i in range(num_iterations):
-    if i % 32 == 0:
-        print(i)
     f_idx = random.randint(0, 1)
 
     t0 = time.time()
