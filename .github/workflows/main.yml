@@ -13,18 +13,18 @@ jobs:
       fail-fast: false
       matrix:
         setuptools-version:
-          - 40.0.0
-          - 41.4.0
+          # - 40.0.0
+          # - 41.4.0
           # - 42.0.0
-          - 44.0.0
-          # - 46.0.0
+          # - 44.0.0
+          - 46.0.0
         python-version:
           - 2.7
           - pypy2
           - 3.8
           - pypy3
         ks-runtime-url:
-          - git+https://github.com/dgelessus/kaitai_struct_python_runtime.git@fix_setup_cfg_read
+          - git+https://github.com/dgelessus/kaitai_struct_python_runtime.git@simplify_terminate_strip_right
           - git+https://github.com/kaitai-io/kaitai_struct_python_runtime.git@master
     steps:
       - uses: actions/checkout@v2
@@ -35,9 +35,9 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: Install setuptools
         run: python -m pip install --user setuptools==${{ matrix.setuptools-version }}
-      - name: Install enum34
-        run: python -m pip install enum34
-        if: ${{ matrix.python-version == 2.7 || matrix.python-version == 'pypy2' }}
+      # - name: Install enum34
+      #   run: python -m pip install enum34
+      #   if: ${{ matrix.python-version == 2.7 || matrix.python-version == 'pypy2' }}
       - name: Install KS runtime library
         run: python -m pip install --user ${{ matrix.ks-runtime-url }}
       - name: Run test.py
