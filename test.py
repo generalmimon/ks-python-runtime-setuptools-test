@@ -4,8 +4,10 @@ import time
 import random
 import statistics
 
-len_blob = 4 * (2 ** 20) # 4 MiB
+len_blob = 8 * (2 ** 20) # 8 MiB
 num_sections = 2
+num_iterations = 512
+
 len_section = len_blob // num_sections
 
 test_blob = bytes([i // len_section for i in range(len_blob)])
@@ -14,7 +16,7 @@ functions = KaitaiStream.bytes_strip_right, KaitaiStream.bytes_terminate
 times = {f.__name__: [] for f in functions}
 
 # https://www.peterbe.com/plog/how-to-do-performance-micro-benchmarks-in-python
-for i in range(8192):
+for i in range(num_iterations):
     f_idx = random.randint(0, 1)
 
     t0 = time.time()
@@ -28,7 +30,7 @@ for i in range(8192):
     times[name].append((t1 - t0) * 1000)
 
 for name, numbers in times.items():
-    print('FUNCTION:', name, 'Used', len(numbers), 'times')
-    print('\tMEDIAN', statistics.median(numbers))
-    print('\tMEAN  ', statistics.mean(numbers))
-    print('\tSTDEV ', statistics.stdev(numbers))
+    print('FUNCTION: {} Used {} times'.format(name, len(numbers)))
+    print('\tMEDIAN {}'.format(statistics.median(numbers)))
+    print('\tMEAN  {}'.format(statistics.mean(numbers)))
+    print('\tSTDEV {}'.format(statistics.stdev(numbers)))
