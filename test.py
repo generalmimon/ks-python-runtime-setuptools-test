@@ -31,5 +31,8 @@ for i in range(num_iterations):
 for name, numbers in times.items():
     print('FUNCTION: {} Used {} times'.format(name, len(numbers)))
     print('\tMEDIAN {}'.format(statistics.median(numbers)))
-    print('\tMEAN  {}'.format(statistics.mean(numbers)))
-    print('\tSTDEV {}'.format(statistics.stdev(numbers)))
+    print('\tMEAN   {}'.format(statistics.mean(numbers)))
+    print('\tSTDEV  {}'.format(statistics.stdev(numbers)))
+    print('\tMIN    {}'.format(min(numbers)))
+    print('\tMAX    {}'.format(max(numbers)))
+    print('\t1st    {}'.format(numbers[0]))
